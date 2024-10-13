@@ -1,0 +1,41 @@
+
+version: '3.7'
+services:
+  nest:
+    container_name: cradle
+    build: .
+    tty: true
+    ports:
+      - '3001:3001'
+    volumes:
+      - type: bind
+        source: .
+        target: /api
+    depends_on:
+      - db
+
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    container_name: cradle-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cradle
+      MYSQL_PASSWORD: root
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    container_name: cradle-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=cradle-db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - 8080:80
