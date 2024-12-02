@@ -29,12 +29,12 @@ model Building {
   remarks           String
   nearbyInformation String
   distanceMinutes   Int
-  rent              Int
-  occupancyArea     Int
   deposit           Int
   keyMoney          Int
   allFloors         Int
   allRooms          Int
+  rent              Float
+  occupancyArea     Float
   latitude          Float
   longitude         Float
   isVacancy         Boolean
