@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider      = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -25,7 +25,7 @@ model Building {
   floorPlan         String
   age               DateTime
   direction         String
-  vacacyFloors      String
+  vacancyFloors     String
   remarks           String
   nearbyInformation String
   distanceMinutes   Int
@@ -65,4 +65,29 @@ model Blog {
   updatedAt DateTime @updatedAt
 
   @@map("Blog")
+}
+
+model Parking {
+  id                Int      @id @default(autoincrement())
+  uid               String   @unique
+  name              String
+  prefecture        String
+  city              String
+  town              String
+  address           String
+  age               DateTime
+  remarks           String
+  nearbyInformation String
+  vacancyPlaces     String @default("")
+  distanceMinutes   Int
+  deposit           Int
+  keyMoney          Int
+  allPlaces         Int
+  rent              Float
+  latitude          Float
+  longitude         Float
+  createdAt         DateTime @updatedAt
+  updatedAt         DateTime @updatedAt
+
+  @@map("Parking")
 }

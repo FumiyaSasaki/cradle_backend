@@ -11,10 +11,13 @@ import { CompositeController } from './composite/composite.controller';
 import { CompositeService } from './composite/composite.service';
 import { CompositeModule } from './composite/composite.module';
 import { BlogService } from './blog/blog.service';
+import { ParkingService } from './parking/parking.service';
+import { ParkingController } from './parking/parking.controller';
+import { ParkingModule } from './parking/parking.module';
 
 @Module({
-  imports: [BuildingModule, BlogModule, CompositeModule],
-  controllers: [AppController, BuildingController, BlogController, CompositeController],
-  providers: [AppService, PrismaService, BuildingService, BlogService, CompositeService],
+  imports: [BuildingModule, BlogModule, CompositeModule, ParkingModule],
+  controllers: [AppController, BuildingController, BlogController, CompositeController, ParkingController],
+  providers: [AppService, PrismaService, BuildingService, BlogService, CompositeService, ParkingService],
 })
 export class AppModule {}
